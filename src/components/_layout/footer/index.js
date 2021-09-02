@@ -1,10 +1,16 @@
 import _ from "lodash";
 import React from "react";
-import { models, steps } from "../../constants";
-import useSteps from "../../hooks/steps";
-import arrowRight from "../../assets/arrowRight.svg";
-import arrowLeft from "../../assets/arrowLeft.svg";
-import AnimationContainer from "../animation-container";
+
+import useSteps from "../../../hooks/product-builder";
+import arrowRight from "../../../assets/arrowRight.svg";
+import arrowLeft from "../../../assets/arrowLeft.svg";
+import AnimationContainer from "../../animation-container";
+import {
+	getSelectedAccessories,
+	getSelectedCarModel,
+	getSelectedColor,
+	getStep,
+} from "../../utils";
 
 const Footer = () => {
 	const {
@@ -16,16 +22,14 @@ const Footer = () => {
 		dispatch,
 	} = useSteps();
 
-	const selectedModel = _.find(models, (m) => m.id === selectedModelId);
-	const selectedColor = _.find(
-		selectedModel?.colors,
-		(c) => c.id === selectedColorId
+	const selectedModel = getSelectedCarModel(selectedModelId);
+	const selectedColor = getSelectedColor(selectedColorId, selectedModel);
+	const selectedAccessories = getSelectedAccessories(
+		selectedAccessoryIds,
+		selectedModel
 	);
-	const selectedAccessories = _.filter(selectedModel?.accessories, (a) =>
-		_.includes(selectedAccessoryIds, a.id)
-	);
-	const nextStep = _.find(steps, (s) => s.id === selectedStepId + 1);
-	const previousStep = _.find(steps, (s) => s.id === selectedStepId - 1);
+	const nextStep = getStep(selectedStepId + 1);
+	const previousStep = getStep(selectedStepId - 1);
 
 	const changeStep = (stepId) => {
 		dispatch({

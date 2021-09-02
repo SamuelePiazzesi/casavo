@@ -1,12 +1,12 @@
 import React, { createContext, useReducer } from "react";
 
-const StepsContext = createContext();
+const ProductBuilderContext = createContext();
 
-const StepsProvider = ({ children }) => {
+const ProductBuilderProvider = ({ children }) => {
 	const initialState = {
 		selectedStepId: 1,
 		previousStepId: null,
-		selectedModelId: null,
+		selectedModel: null,
 		selectedColorId: null,
 		selectedAccessoryIds: [],
 	};
@@ -51,15 +51,15 @@ const StepsProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	return (
-		<StepsContext.Provider
+		<ProductBuilderContext.Provider
 			value={{
 				...state,
 				dispatch,
 			}}
 		>
 			{children}
-		</StepsContext.Provider>
+		</ProductBuilderContext.Provider>
 	);
 };
 
-export { StepsContext, StepsProvider };
+export { ProductBuilderContext, ProductBuilderProvider };

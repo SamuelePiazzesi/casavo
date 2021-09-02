@@ -1,15 +1,15 @@
 import _ from "lodash";
 import React from "react";
-import { models } from "../../../constants";
-import useSteps from "../../../hooks/steps";
+import useSteps from "../../../hooks/product-builder";
+import { getSelectedCarModel, getSelectedColor } from "../../utils";
 
 const StepColors = () => {
 	const { selectedModelId, selectedColorId, dispatch } = useSteps();
 
-	const selectedModel = _.find(models, (model) => model.id === selectedModelId);
+	const selectedModel = getSelectedCarModel(selectedModelId);
 
 	const colors = selectedModel?.colors;
-	const selectedColor = _.find(colors, (c) => c.id === selectedColorId);
+	const selectedColor = getSelectedColor(selectedColorId);
 
 	const selectColor = (colorId) => {
 		dispatch({

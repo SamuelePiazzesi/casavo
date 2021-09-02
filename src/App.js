@@ -1,22 +1,11 @@
-import Footer from "./components/footer";
-import Header from "./components/header";
 import Steps from "./components/steps";
-import { StepsProvider } from "./context/steps";
+import Layout from "./components/_layout";
 
 const App = () => {
 	return (
-		<>
-			<StepsProvider>
-				<Header />
-				<div className='relative'>
-					<div className='pt-24 pb-16 xl:py-56 lg:py-64 lg:mx-16 xl:mx-80 px-4 h-full'>
-						<Steps />
-					</div>
-				</div>
-
-				<Footer />
-			</StepsProvider>
-		</>
+		<Layout>
+			<Steps />
+		</Layout>
 	);
 };
 

@@ -1,12 +1,13 @@
 import React from "react";
-import useSteps from "../../hooks/steps";
+import useSteps from "../../../hooks/product-builder";
 import _ from "lodash";
-import { steps } from "../../constants";
+import { steps } from "../../../constants";
+import { getStep } from "../../utils";
 
 const Header = () => {
 	const { selectedStepId, dispatch, selectedModelId } = useSteps();
 
-	const selectedStep = _.find(steps, (s) => s.id === selectedStepId);
+	const selectedStep = getStep(selectedStepId);
 
 	const selectStep = (id) => {
 		if (!_.isNil(selectedModelId)) {

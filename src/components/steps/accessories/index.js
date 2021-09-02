@@ -1,13 +1,13 @@
 import React from "react";
-import useSteps from "../../../hooks/steps";
+import useSteps from "../../../hooks/product-builder";
 import _ from "lodash";
-import { models } from "../../../constants";
 import checkIcon from "../../../assets/icon-check.svg";
+import { getSelectedCarModel } from "../../utils";
 
 const StepAccessories = () => {
 	const { selectedModelId, selectedAccessoryIds, dispatch } = useSteps();
 
-	const selectedModel = _.find(models, (model) => model.id === selectedModelId);
+	const selectedModel = getSelectedCarModel(selectedModelId);
 
 	const accessories = selectedModel?.accessories;
 
@@ -28,7 +28,7 @@ const StepAccessories = () => {
 
 	return (
 		<div className="flex w-full flex-col items-center justify-center z-20 text-center ">
-			{_.map(accessories, (accessory, index) => (
+			{_.map(accessories, (accessory) => (
 				<div
 					key={accessory.id}
 					className={`flex flex-col lg:flex-row  justify-center lg:justify-between 

@@ -1,5 +1,5 @@
 import React from "react";
-import useSteps from "../../hooks/steps";
+import useSteps from "../../hooks/product-builder";
 import StepAccessories from "./accessories";
 import StepColors from "./colors";
 import StepModels from "./models";
