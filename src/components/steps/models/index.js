@@ -5,23 +5,7 @@ import checkIcon from "../../../assets/icon-check.svg";
 import { formatInDollars } from "../../utils";
 
 const StepModels = () => {
-	const { selectedModelId, dispatch } = useSteps();
-
-	const selectModel = (id, colorId) => {
-		dispatch({
-			type: "SELECTED_MODEL_ID_UPDATE",
-			payload: id,
-		});
-		dispatch({
-			type: "SELECTED_COLOR_ID_UPDATE",
-			payload: colorId,
-		});
-
-		dispatch({
-			type: "SELECTED_ACCESSORY_IDS_UPDATE",
-			payload: [],
-		});
-	};
+	const { selectedModelId, onSelectCarModel } = useSteps();
 
 	return (
 		<div className="flex flex-col lg:flex-row w-full h-full z-20">
@@ -30,9 +14,9 @@ const StepModels = () => {
 					key={index}
 					onClick={() => {
 						if (model.id === selectedModelId) {
-							selectModel(null, null);
+							onSelectCarModel({ id: null, colorId: null });
 						} else {
-							selectModel(model.id, model.colors[0].id);
+							onSelectCarModel({ id: model.id, colorId: model.colors[0].id });
 						}
 					}}
 					className={`${

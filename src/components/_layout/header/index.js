@@ -5,23 +5,9 @@ import { steps } from "../../../constants";
 import { getStep } from "../../utils";
 
 const Header = () => {
-	const { selectedStepId, dispatch, selectedModelId } = useSteps();
+	const { selectedStepId, onSelectStep } = useSteps();
 
 	const selectedStep = getStep(selectedStepId);
-
-	const selectStep = (id) => {
-		if (!_.isNil(selectedModelId)) {
-			dispatch({
-				type: "SELECTED_STEP_ID_UPDATE",
-				payload: id,
-			});
-
-			dispatch({
-				type: "PREVIOUS_STEP_ID_UPDATE",
-				payload: selectedStepId,
-			});
-		}
-	};
 
 	return (
 		<header
@@ -31,7 +17,7 @@ const Header = () => {
 		>
 			<h1
 				className="font-semibold hidden 
-				lg:block text-5xl mt-4 mt-14 mb-10"
+				lg:block text-4xl my-6"
 			>
 				Product Builder
 			</h1>
@@ -63,7 +49,9 @@ const Header = () => {
 								}-400 font-semibold cursor-pointer transition 
 								duration-500 ease-in-out hover:text-yellow-400`}
 								onClick={() => {
-									selectStep(step.id);
+									onSelectStep({
+										step: step.id,
+									});
 								}}
 							>
 								{step.title}

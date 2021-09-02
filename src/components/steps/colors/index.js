@@ -4,19 +4,12 @@ import useSteps from "../../../hooks/product-builder";
 import { getSelectedCarModel, getSelectedColor } from "../../utils";
 
 const StepColors = () => {
-	const { selectedModelId, selectedColorId, dispatch } = useSteps();
+	const { selectedModelId, selectedColorId, onSelectColor } = useSteps();
 
 	const selectedModel = getSelectedCarModel(selectedModelId);
 
 	const colors = selectedModel?.colors;
 	const selectedColor = getSelectedColor(selectedColorId, selectedModel);
-
-	const selectColor = (colorId) => {
-		dispatch({
-			type: "SELECTED_COLOR_ID_UPDATE",
-			payload: colorId,
-		});
-	};
 
 	return (
 		<div className="flex w-full z-20">
@@ -42,7 +35,7 @@ const StepColors = () => {
 									backgroundColor: color.hex,
 								}}
 								onClick={() => {
-									selectColor(color.id);
+									onSelectColor({ colorId: color.id });
 								}}
 							/>
 						</li>
