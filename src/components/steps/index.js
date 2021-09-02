@@ -4,15 +4,24 @@ import StepAccessories from "./accessories";
 import StepColors from "./colors";
 import StepModels from "./models";
 import StepSummary from "./summary";
+import { useSpring, animated } from "react-spring";
 
 const Steps = () => {
 	const { selectedStepId } = useSteps();
 
+	const styles = useSpring({
+		to: { opacity: 1, x: 0 },
+		from: { opacity: 0, x: 40 },
+	});
+
 	return (
 		<>
-			<div className={selectedStepId === 1 ? "block" : "hidden"}>
+			<animated.div
+				style={styles}
+				className={selectedStepId === 1 ? "block" : "hidden"}
+			>
 				<StepModels />
-			</div>
+			</animated.div>
 			<div className={selectedStepId === 2 ? "block" : "hidden"}>
 				<StepColors />
 			</div>

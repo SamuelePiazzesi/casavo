@@ -122,6 +122,6 @@ export const steps = [
 	{
 		id: 4,
 		title: "Summary",
-		subtitle: "Nice",
+		subtitle: "Summary",
 	},
 ];

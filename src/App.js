@@ -8,12 +8,11 @@ const App = () => {
 		<>
 			<StepsProvider>
 				<Header />
-
-				{/* <div className='relative h-screen'>
-					<div className='lg:py-56 lg:mx-80 px-4 lg:px-20'>
+				<div className='relative'>
+					<div className='pt-24 pb-16 xl:py-56 lg:py-64 lg:mx-16 xl:mx-80 px-4 h-full'>
 						<Steps />
 					</div>
-				</div> */}
+				</div>
 
 				<Footer />
 			</StepsProvider>

@@ -27,12 +27,12 @@ const StepAccessories = () => {
 	};
 
 	return (
-		<div className='flex w-full flex-col items-center justify-center z-20'>
+		<div className='flex w-full flex-col items-center justify-center z-20 text-center '>
 			{_.map(accessories, (accessory, index) => (
 				<div
 					key={accessory.id}
-					className={`flex justify-between 
-          items-center w-full p-8 border border-solid
+					className={`flex flex-col lg:flex-row  justify-center lg:justify-between 
+          items-center w-full p-4 lg:p-8 border-2 border-solid
           border-${
 						_.includes(selectedAccessoryIds, accessory.id)
 							? "yellow-400"
@@ -42,19 +42,21 @@ const StepAccessories = () => {
 						selectAccessories(accessory.id);
 					}}
 				>
-					<p className='font-bold text-2xl'>{accessory.label}</p>
-					<div className='flex justify-between items-center'>
-						<p className='font-bold justify-self-center text-2xl mr-10'>
+					<p className='font-medium lg:font-bold text-xl lg:text-2xl mb-3 lg:mb-0'>
+						{accessory.label}
+					</p>
+					<div className='flex flex-col justify-center lg:flex-row lg:justify-between items-center'>
+						<p className='mb-3 lg:mb-0 font-medium lg:font-bold justify-self-center text-gray-500 lg:text-black text-sm lg:text-2xl lg:mr-10'>
 							{Intl.NumberFormat("en-US", {
 								style: "currency",
 								currency: "USD",
 							}).format(accessory.price)}
 						</p>
 						<div
-							className={` border border-solid border-${
+							className={`m-auto lg:m-0 border-2 w-8 h-8   border-solid border-${
 								_.includes(selectedAccessoryIds, accessory.id)
-									? "yellow-400 bg-yellow-400 w-10 h-10"
-									: "gray-200 w-8 h-8"
+									? "yellow-400  transition duration-500 ease-in-out bg-yellow-400 transform scale-110"
+									: "gray-200"
 							}`}
 						>
 							<img src={checkIcon} alt='check' />
