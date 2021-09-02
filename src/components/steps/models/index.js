@@ -2,18 +2,19 @@ import React from "react";
 import { models } from "../../../constants";
 import useSteps from "../../../hooks/product-builder";
 import checkIcon from "../../../assets/icon-check.svg";
+import { formatInDollars } from "../../utils";
 
 const StepModels = () => {
 	const { selectedModelId, dispatch } = useSteps();
 
-	const selectModel = (model) => {
+	const selectModel = (id, colorId) => {
 		dispatch({
 			type: "SELECTED_MODEL_ID_UPDATE",
-			payload: model,
+			payload: id,
 		});
 		dispatch({
 			type: "SELECTED_COLOR_ID_UPDATE",
-			payload: model?.colors[0],
+			payload: colorId,
 		});
 
 		dispatch({
@@ -29,9 +30,9 @@ const StepModels = () => {
 					key={index}
 					onClick={() => {
 						if (model.id === selectedModelId) {
-							selectModel(null);
+							selectModel(null, null);
 						} else {
-							selectModel(model);
+							selectModel(model.id, model.colors[0].id);
 						}
 					}}
 					className={`${
@@ -49,11 +50,7 @@ const StepModels = () => {
 						className="max-w-xs lg:max-w-sm mb-6 lg:mb-7"
 					/>
 					<span className="text-gray-500 mb-3 text-sm lg:text-base">
-						from{" "}
-						{Intl.NumberFormat("en-US", {
-							style: "currency",
-							currency: "USD",
-						}).format(model.initialPrice)}
+						from {formatInDollars(model.initialPrice)}
 					</span>
 					<div
 						className={`w-10 h-10 border-solid border-2 border-${

@@ -2,7 +2,7 @@ import React from "react";
 import useSteps from "../../../hooks/product-builder";
 import _ from "lodash";
 import checkIcon from "../../../assets/icon-check.svg";
-import { getSelectedCarModel } from "../../utils";
+import { formatInDollars, getSelectedCarModel } from "../../utils";
 
 const StepAccessories = () => {
 	const { selectedModelId, selectedAccessoryIds, dispatch } = useSteps();
@@ -52,10 +52,7 @@ const StepAccessories = () => {
 						text-gray-500 lg:text-black text-sm
 						lg:text-2xl lg:mr-10"
 						>
-							{Intl.NumberFormat("en-US", {
-								style: "currency",
-								currency: "USD",
-							}).format(accessory.price)}
+							{formatInDollars(accessory.price)}
 						</p>
 						<div
 							className={`m-auto lg:m-0 border-2 w-8 h-8   border-solid border-${

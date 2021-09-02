@@ -9,7 +9,7 @@ const StepColors = () => {
 	const selectedModel = getSelectedCarModel(selectedModelId);
 
 	const colors = selectedModel?.colors;
-	const selectedColor = getSelectedColor(selectedColorId);
+	const selectedColor = getSelectedColor(selectedColorId, selectedModel);
 
 	const selectColor = (colorId) => {
 		dispatch({
@@ -17,6 +17,7 @@ const StepColors = () => {
 			payload: colorId,
 		});
 	};
+
 	return (
 		<div className="flex w-full z-20">
 			<div className={`flex flex-col items-center justify-center w-full`}>

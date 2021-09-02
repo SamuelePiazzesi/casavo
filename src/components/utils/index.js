@@ -31,3 +31,12 @@ export const getSelectedAccessories = (ids = [], model = {}) => {
 
 	return _.filter(model.accessories, (a) => _.includes(ids, a.id));
 };
+
+export const formatInDollars = (value = 0) => {
+	return Intl.NumberFormat("en-US", {
+		style: "currency",
+		currency: "USD",
+		minimumFractionDigits: 0,
+		maximumFractionDigits: 0,
+	}).format(value);
+};

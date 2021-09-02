@@ -2,6 +2,7 @@ import _ from "lodash";
 import React from "react";
 import useSteps from "../../../hooks/product-builder";
 import {
+	formatInDollars,
 	getSelectedAccessories,
 	getSelectedCarModel,
 	getSelectedColor,
@@ -9,9 +10,7 @@ import {
 
 const StepSummary = () => {
 	const { selectedModelId, selectedAccessoryIds, selectedColorId } = useSteps();
-
 	const selectedModel = getSelectedCarModel(selectedModelId);
-
 	const selectedColor = getSelectedColor(selectedColorId, selectedModel);
 	const selectedAccessories = getSelectedAccessories(
 		selectedAccessoryIds,
@@ -45,11 +44,7 @@ const StepSummary = () => {
 				/>
 
 				<h1 className="font-normal text-xl lg:text-2xl">
-					{selectedColor?.label} -{" "}
-					{Intl.NumberFormat("en-US", {
-						style: "currency",
-						currency: "USD",
-					}).format(selectedColor?.price)}
+					{selectedColor?.label} - {formatInDollars(selectedColor?.price)}
 				</h1>
 			</div>
 

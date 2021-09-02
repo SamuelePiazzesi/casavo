@@ -6,6 +6,7 @@ import arrowRight from "../../../assets/arrowRight.svg";
 import arrowLeft from "../../../assets/arrowLeft.svg";
 import AnimationContainer from "../../animation-container";
 import {
+	formatInDollars,
 	getSelectedAccessories,
 	getSelectedCarModel,
 	getSelectedColor,
@@ -110,12 +111,7 @@ const Footer = () => {
 						<div className="flex flex-col self-center ">
 							<span className="text-gray-500">Total</span>
 
-							<h5 className="font-medium text-3xl">
-								{Intl.NumberFormat("en-US", {
-									style: "currency",
-									currency: "USD",
-								}).format(total)}
-							</h5>
+							<h5 className="font-medium text-3xl">{formatInDollars(total)}</h5>
 						</div>
 					</AnimationContainer>
 				</div>
