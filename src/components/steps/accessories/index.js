@@ -27,7 +27,7 @@ const StepAccessories = () => {
 	};
 
 	return (
-		<div className='flex w-full flex-col items-center justify-center z-20 text-center '>
+		<div className="flex w-full flex-col items-center justify-center z-20 text-center ">
 			{_.map(accessories, (accessory, index) => (
 				<div
 					key={accessory.id}
@@ -42,11 +42,16 @@ const StepAccessories = () => {
 						selectAccessories(accessory.id);
 					}}
 				>
-					<p className='font-medium lg:font-bold text-xl lg:text-2xl mb-3 lg:mb-0'>
+					<p className="font-medium lg:font-bold text-xl lg:text-2xl mb-3 lg:mb-0">
 						{accessory.label}
 					</p>
-					<div className='flex flex-col justify-center lg:flex-row lg:justify-between items-center'>
-						<p className='mb-3 lg:mb-0 font-medium lg:font-bold justify-self-center text-gray-500 lg:text-black text-sm lg:text-2xl lg:mr-10'>
+					<div className="flex flex-col justify-center lg:flex-row lg:justify-between items-center">
+						<p
+							className="mb-3 lg:mb-0 font-medium 
+						lg:font-bold justify-self-center
+						text-gray-500 lg:text-black text-sm
+						lg:text-2xl lg:mr-10"
+						>
 							{Intl.NumberFormat("en-US", {
 								style: "currency",
 								currency: "USD",
@@ -59,7 +64,7 @@ const StepAccessories = () => {
 									: "gray-200"
 							}`}
 						>
-							<img src={checkIcon} alt='check' />
+							<img src={checkIcon} alt="check" />
 						</div>
 					</div>
 				</div>

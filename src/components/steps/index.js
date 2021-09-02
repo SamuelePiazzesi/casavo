@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useSteps from "../../hooks/steps";
 import StepAccessories from "./accessories";
 import StepColors from "./colors";
 import StepModels from "./models";
 import StepSummary from "./summary";
-import { useSpring, animated } from "react-spring";
-import _ from "lodash";
 import AnimationContainer from "../animation-container";
 
 const Steps = () => {

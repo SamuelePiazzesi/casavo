@@ -55,10 +55,16 @@ const Footer = () => {
 						}
 					}}
 				>
-					<img src={arrowLeft} className="justify-self-end"></img>
-					<span className="text-black uppercase text-sm font-bold mx-auto">
-						{previousStep?.title}
-					</span>
+					<AnimationContainer key={selectedStepId} direction="bottom">
+						<img
+							src={arrowLeft}
+							alt="chevron-left"
+							className="justify-self-end"
+						/>
+						<span className="text-black uppercase text-sm font-bold mx-auto">
+							{previousStep?.title}
+						</span>
+					</AnimationContainer>
 				</div>
 
 				<div
@@ -69,18 +75,29 @@ const Footer = () => {
 						}
 					}}
 				>
-					<span className="text-white uppercase text-sm font-bold mx-auto">
-						{nextStep?.title || "Buy now"}
-					</span>
-					<img src={arrowRight} className="justify-self-end"></img>
+					<AnimationContainer key={selectedStepId} direction="bottom">
+						<span className="text-white uppercase text-sm font-bold mx-auto">
+							{nextStep?.title || "Buy now"}
+						</span>
+					</AnimationContainer>
+					<img
+						src={arrowRight}
+						alt="chevron-right"
+						className="justify-self-end"
+					/>
 				</div>
 			</div>
+
 			<div className="hidden px-10 py-6 lg:flex justify-between items-center">
 				<div className="flex">
 					{!_.isNil(selectedModel) ? (
 						<div className="pr-6 mr-6 border-r-2 border-r-solid border-r-gray">
 							<AnimationContainer direction="left">
-								<img src={selectedModel?.img} className="w-28" />
+								<img
+									src={selectedModel?.img}
+									alt="selected-model"
+									className="w-28"
+								/>
 							</AnimationContainer>
 						</div>
 					) : null}
@@ -88,6 +105,7 @@ const Footer = () => {
 					<AnimationContainer direction="left">
 						<div className="flex flex-col self-center ">
 							<span className="text-gray-500">Total</span>
+
 							<h5 className="font-medium text-3xl">
 								{Intl.NumberFormat("en-US", {
 									style: "currency",
@@ -109,7 +127,7 @@ const Footer = () => {
 								font-semibold text-l w-14 h-14  rounded-full flex
 								justify-center items-center mr-4"
 							>
-								<img src={arrowLeft}></img>
+								<img src={arrowLeft} alt="chevron-left" />
 							</button>
 						</AnimationContainer>
 					) : null}
@@ -131,7 +149,8 @@ const Footer = () => {
 						>
 							<span> {nextStep?.title || "Buy now"}</span>
 						</AnimationContainer>
-						<img src={arrowRight} className="h-full"></img>
+
+						<img src={arrowRight} alt="car" className="h-full" />
 					</button>
 				</div>
 			</div>

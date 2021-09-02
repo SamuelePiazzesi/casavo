@@ -23,8 +23,15 @@ const Header = () => {
 	};
 
 	return (
-		<header className="flex sm:flex-col items-center px-4 lg:px-14 py-4 fixed top-0 left-0 w-full z-50 bg-white">
-			<h1 className="font-semibold  hidden lg:block text-5xl mt-4 mt-14 mb-10">
+		<header
+			className="flex sm:flex-col items-center
+			px-4 lg:px-14 py-4 fixed top-0 left-0 w-full
+			z-50 bg-white"
+		>
+			<h1
+				className="font-semibold hidden 
+				lg:block text-5xl mt-4 mt-14 mb-10"
+			>
 				Product Builder
 			</h1>
 

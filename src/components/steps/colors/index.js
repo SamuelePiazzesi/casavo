@@ -18,15 +18,17 @@ const StepColors = () => {
 		});
 	};
 	return (
-		<div className='flex w-full z-20'>
+		<div className="flex w-full z-20">
 			<div className={`flex flex-col items-center justify-center w-full`}>
 				<img
 					src={selectedColor?.img}
-					className='max-w-xs  lg:max-w-3xl mb-16'
+					alt="color"
+					className="max-w-xs  lg:max-w-3xl mb-16"
 				/>
-				<ul className='flex w-full justify-center items-center'>
+				<ul className="flex w-full justify-center items-center">
 					{_.map(colors, (color) => (
 						<li
+							key={color.id}
 							className={`w-10 h-10 lg:w-14 lg:h-14 border-solid border border-${
 								selectedColorId === color.id
 									? "yellow-400 bg-yellow-400"

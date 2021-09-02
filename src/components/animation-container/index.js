@@ -1,6 +1,5 @@
 import React from "react";
 import { useSpring, animated } from "react-spring";
-import useSteps from "../../hooks/steps";
 
 const AnimationContainer = ({ direction, children }) => {
 	const getAnimatinDirection = () => {
