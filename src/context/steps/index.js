@@ -9,7 +9,6 @@ const StepsProvider = ({ children }) => {
 		selectedModelId: null,
 		selectedColorId: null,
 		selectedAccessoryIds: [],
-		animationReset: true,
 	};
 
 	const reducer = (state, action) => {
@@ -44,25 +43,12 @@ const StepsProvider = ({ children }) => {
 					selectedAccessoryIds: action.payload,
 				};
 
-			case "ANIMATION_RESET_UPDATE":
-				return {
-					...state,
-					animationReset: action.payload,
-				};
-
 			default:
 				throw new Error();
 		}
 	};
 
 	const [state, dispatch] = useReducer(reducer, initialState);
-
-	useEffect(() => {
-		dispatch({
-			type: "ANIMATION_RESET_UPDATE",
-			payload: true,
-		});
-	}, [state.selectedStepId]);
 
 	return (
 		<StepsContext.Provider
