@@ -4,6 +4,7 @@ import { models, steps } from "../../constants";
 import useSteps from "../../hooks/steps";
 import arrowRight from "../../assets/arrowRight.svg";
 import arrowLeft from "../../assets/arrowLeft.svg";
+import { animated, useSpring } from "react-spring";
 
 const Footer = () => {
 	const {
@@ -13,6 +14,12 @@ const Footer = () => {
 		selectedStepId,
 		dispatch,
 	} = useSteps();
+
+	const styles = useSpring({
+		reset: _.isNil(selectedModelId),
+		to: { opacity: 1, x: 0 },
+		from: { opacity: 0, x: -100 },
+	});
 
 	const selectedModel = _.find(models, (m) => m.id === selectedModelId);
 	const selectedColor = _.find(
@@ -75,11 +82,15 @@ const Footer = () => {
 			</div>
 			<div className='hidden px-10 py-6 lg:flex justify-between items-center'>
 				<div className='flex'>
-					{!_.isEmpty(selectedModel) ? (
-						<div className='pr-6 mr-6 border-r-2 border-r-solid border-r-gray'>
-							<img src={selectedModel?.img} className='w-48' />
-						</div>
+					{!_.isNil(selectedModel) ? (
+						<animated.div
+							style={styles}
+							className='pr-6 mr-6 border-r-2 border-r-solid border-r-gray'
+						>
+							<img style={styles} src={selectedModel?.img} className='w-28' />
+						</animated.div>
 					) : null}
+
 					<div className='flex flex-col self-center '>
 						<span className='text-gray-500'>Total</span>
 						<h5 className='font-medium text-3xl'>

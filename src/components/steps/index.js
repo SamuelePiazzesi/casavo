@@ -1,36 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useSteps from "../../hooks/steps";
 import StepAccessories from "./accessories";
 import StepColors from "./colors";
 import StepModels from "./models";
 import StepSummary from "./summary";
 import { useSpring, animated } from "react-spring";
+import _ from "lodash";
 
 const Steps = () => {
-	const { selectedStepId } = useSteps();
+	const { previousStepId, selectedStepId, animationReset } = useSteps();
 
 	const styles = useSpring({
-		to: { opacity: 1, x: 0 },
-		from: { opacity: 0, x: 40 },
+		reset: animationReset,
+		to: { opacity: 1, transform: "translate(0px, 0px)" },
+		from: {
+			opacity: 0,
+			transform: `translate(${
+				previousStepId > selectedStepId ? "-30px" : "30px"
+			}, 0)`,
+		},
 	});
 
 	return (
 		<>
+			<h1>{animationReset ? "true" : false}</h1>
 			<animated.div
 				style={styles}
 				className={selectedStepId === 1 ? "block" : "hidden"}
 			>
 				<StepModels />
 			</animated.div>
-			<div className={selectedStepId === 2 ? "block" : "hidden"}>
+			<animated.div
+				style={styles}
+				className={selectedStepId === 2 ? "block" : "hidden"}
+			>
 				<StepColors />
-			</div>
-			<div className={selectedStepId === 3 ? "block" : "hidden"}>
+			</animated.div>
+			<animated.div
+				style={styles}
+				className={selectedStepId === 3 ? "block" : "hidden"}
+			>
 				<StepAccessories />
-			</div>
-			<div className={selectedStepId === 4 ? "block" : "hidden"}>
+			</animated.div>
+			<animated.div
+				style={styles}
+				className={selectedStepId === 4 ? "block" : "hidden"}
+			>
 				<StepSummary />
-			</div>
+			</animated.div>
 		</>
 	);
 };

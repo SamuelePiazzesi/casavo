@@ -14,6 +14,11 @@ const Header = () => {
 				type: "SELECTED_STEP_ID_UPDATE",
 				payload: id,
 			});
+
+			dispatch({
+				type: "PREVIOUS_STEP_ID_UPDATE",
+				payload: selectedStepId,
+			});
 		}
 	};
 
