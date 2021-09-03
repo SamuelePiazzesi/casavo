@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
 		<ProductBuilderProvider>
 			<Header />
 			<div className="relative">
-				<div className="pt-32 pb-16 xl:py-48 md:py-8 lg:py-64 lg:mx-16 xl:mx-96 px-4 h-full">
+				<div className="pt-32 pb-16 xl:py-48 md:py-36 lg:py-64 lg:mx-16 xl:mx-96 px-4 h-full">
 					{children}
 				</div>
 			</div>

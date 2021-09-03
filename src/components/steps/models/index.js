@@ -10,7 +10,7 @@ const StepModels = () => {
 	return (
 		<div className="flex flex-col lg:flex-row w-full h-full z-20">
 			{models.map((model, index) => (
-				<div
+				<button
 					key={index}
 					onClick={() => {
 						if (model.id === selectedModelId) {
@@ -45,7 +45,7 @@ const StepModels = () => {
 					>
 						<img src={checkIcon} alt="check" />
 					</div>
-				</div>
+				</button>
 			))}
 		</div>
 	);

@@ -43,7 +43,7 @@ const Footer = () => {
 			style={{ boxShadow: "0 0 39px rgb(0 0 0 / 10%)" }}
 		>
 			<div className="flex lg:hidden h-14 cursor-pointer">
-				<div
+				<button
 					className={`bg-white w-full border-0 ${
 						selectedStepId !== 1 ? "flex" : "hidden"
 					} items-center justify-center flex px-4`}
@@ -63,9 +63,9 @@ const Footer = () => {
 							{previousStep?.title}
 						</span>
 					</AnimationContainer>
-				</div>
+				</button>
 
-				<div
+				<button
 					className="border-0 bg-yellow-500 w-full flex items-center justify-center px-4"
 					onClick={() => {
 						if (!_.isEmpty(nextStep)) {
@@ -83,7 +83,7 @@ const Footer = () => {
 						alt="chevron-right"
 						className="justify-self-end"
 					/>
-				</div>
+				</button>
 			</div>
 
 			<div className="hidden px-10 py-6 lg:flex justify-between items-center">
