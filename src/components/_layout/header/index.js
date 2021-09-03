@@ -3,6 +3,7 @@ import useSteps from "../../../hooks/product-builder";
 import _ from "lodash";
 import { steps } from "../../../constants";
 import { getStep } from "../../utils";
+import arrowLeft from "../../../assets/arrowLeft.svg";
 
 const Header = () => {
 	const { selectedStepId, onSelectStep } = useSteps();
@@ -11,10 +12,16 @@ const Header = () => {
 
 	return (
 		<header
-			className="flex sm:flex-col items-center
-			px-4 lg:px-14 py-4 fixed top-0 left-0 w-full
+			className="flex flex-col-reverse md:flex-col items-center
+			px-4 lg:px-8 py-4 fixed top-0 left-0 w-full
 			z-50 bg-white"
 		>
+			<div className="bg-gray-500 md:bg-white text-white md:text-gray-500 border border-solid w-full md:w-auto cursor-pointer border-gray-400 mt-2 p-1 md:py-2 md:-mb-10 px-4 rounded  flex justify-center items-center md:self-start">
+				<img src={arrowLeft} alt="chevron-left" />
+
+				<span className="ml-2">Article & Download</span>
+			</div>
+
 			<h1
 				className="font-semibold hidden 
 				lg:block text-4xl my-6"
